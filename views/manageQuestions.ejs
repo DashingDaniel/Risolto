@@ -1,0 +1,46 @@
+<% include ./partials/header.ejs %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Risolto</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/current_user">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/askQuestion">Ask Something</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/giveSolution">Give a solution</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/logged/profile">Profile</a>
+        </li>
+      </ul>
+      <a href="/api/logout" class="btn btn-secondary ml-2 my-sm-0" type="submit">Logout</a>
+    </div>
+</nav>
+<br><br>
+<div class="container">
+    <h1>These are your posts You can edit them as per yor wish</h1>
+    <br>
+    <% results.forEach((result)=>{ %>
+        <form action="/edit/<%= result._id %>" class="card" method="GET">
+            <div class="card-body">
+                <div class="panel-heading"><%= result.title %></div><br>
+                <div class="panel-body"><%= result.question %></div><br>
+                <button class="btn btn-primary btn-sm" type="submit">Edit</button><br>
+                
+              </div>
+              
+        </form>
+        <form action="/delete/<%= result._id %>" method="POST"><br>
+          <button class="btn btn-danger btn-sm" type="submit">Delete</button>            
+      </form>
+        
+        <br>
+    <% }) %>
+</div>
+<% include ./partials/footer.ejs %>

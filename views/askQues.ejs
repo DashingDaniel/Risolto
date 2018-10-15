@@ -1,0 +1,41 @@
+<% include ./partials/header.ejs %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Risolto</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/current_user">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/askQuestion">Ask Something</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/giveSolution">Give a solution</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logged/profile">Profile</a>
+        </li>
+      </ul>
+      <img src="<%= user.photo %>" class="rounded-circle mr-2" alt="<%= user.name %>">
+      <a href="/api/logout" class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</a>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <form method="POST" action="/newQuestion/<%=user._id%>">
+      <h3>Ask Something</h3>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" name="title" type="text" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="question">Question</label>
+            <textarea class="form-control" id="question" name="question" rows="3" placeholder="Enter your question here"></textarea>
+          </div>
+          <button class="btn btn-default" type="submit">Post</button>
+      </form>
+</div>
+<% include ./partials/footer.ejs %>

@@ -1,0 +1,65 @@
+<% include ./partials/header.ejs %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Risolto</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/api/current_user">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/askQuestion">Ask Something</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/giveSolution">Give a solution</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logged/profile">Profile</a>
+        </li>
+      </ul>
+      <img src="<%= user.photo %>" class="rounded-circle mr-2" alt="<%= user.name %>">
+      <a href="/api/logout" class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</a>
+    </div>
+  </nav>
+  <div class="jumbotron text-center">
+    <h1 class="display-3">Risolto</h1>
+    <p class="lead">A simple solution provider for all your problems</p>
+  </div>
+  <br>
+  <div class="container">
+    <br>
+    <h2 class="text-center">What is Risolto?</h2>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <img class="card-img-top" src="/img/help.png" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">Privacy Guarenteed</h4>
+            <p class="card-text">Never mind about your privacy in Risolto, we won't leak any information about what questions you have asked, which user asked which questions, those kinda information will be hidden and never shown to any user.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+          <div class="card">
+              <img class="card-img-top" src="/img/puzzled.jpg" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Confused with problems?</h4>
+                <p class="card-text">If you have a lot of problems post thatas questions in Risolto, There are experienced persons who might already faced this problem and somehow solved this problem in a different mannner. So you have people to help here...</p>
+              </div>
+            </div>
+      </div>
+      <div class="col">
+          <div class="card">
+              <img class="card-img-top" src="/img/solved.jpg" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Get solved here!!!</h4>
+                <p class="card-text">All your problems will be solved by the users in Risolto, Even there are experts on this particular domain and there is a high probablity that you could get a better solution here.. So never loose hope</p>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+  <% include ./partials/footer.ejs %>

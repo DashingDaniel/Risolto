@@ -1,0 +1,48 @@
+<% include ./partials/header.ejs %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Risolto</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/current_user">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/askQuestion">Ask Something</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/giveSolution">Give a solution</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/logged/profile">Profile</a>
+        </li>
+      </ul>
+      <a href="/api/logout" class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</a>
+    </div>
+  </nav>
+  <br><br><br>
+  <% if(results.length !=0){ %>
+     <div class="container">
+      <% results.forEach((result)=>{ %>
+        <div class="card border-primary mb-3">
+            <div class="card-header"><%= result.title %></div>
+                <div class="card-body">
+                    <p class="card-text"><%= result.question %></p>
+                    <a href="/provideSolution/<%= result._id %>" class="btn btn-outline-primary btn-sm">Answer</a>
+                </div>
+                
+        </div>
+        <br>
+      <% }) %>
+     </div>
+  <% }else{ %>
+    <div class="container">
+        <div class="alert alert-dismissible alert-danger">
+        <strong>Oh Sorry!</strong> <a href="/giveSolution" class="alert-link">Change the search term</a> and try submitting again.
+        </div>
+    </div>
+    
+  <% } %>
+<% include ./partials/footer.ejs %>

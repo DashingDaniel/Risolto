@@ -1,0 +1,34 @@
+<% include ./partials/header.ejs %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Risolto</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/current_user">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/askQuestion">Ask Something</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/giveSolution">Give a solution</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logged/profile">Profile</a>
+        </li>
+      </ul>
+      <img src="cinqueterre.jpg" class="rounded-circle" alt="Cinque Terre">
+      <a href="/api/logout" class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</a>
+    </div>
+  </nav>
+  <br><br><br>
+  <div class="container">
+    <form class="form-inline lg-form form-lg" method="POST" action="/getQuestions/<%=user._id%>">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-lg ml-3 w-75" type="text" name="title" placeholder="Search" aria-label="Search">
+        <button class="btn btn-secondary ml-3" type="submit">Search</button>
+    </form>
+  </div>
+<% include ./partials/footer.ejs %>

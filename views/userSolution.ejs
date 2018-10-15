@@ -1,0 +1,58 @@
+<% include ./partials/header.ejs %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Risolto</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/current_user">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/askQuestion">Ask Something</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/giveSolution">Give a solution</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/logged/profile">Profile</a>
+        </li>
+      </ul>
+      <a href="/api/logout" class="btn btn-secondary ml-2 my-sm-0" type="submit">Logout</a>
+    </div>
+  </nav>
+  <br><br>
+  <div class="container">
+      <!-- results.posts.forEach((post) => {
+        console.log(post.title);
+        console.log(post.question);
+        post.solutions.forEach((solution) => {
+            console.log(solution.solution);
+        });
+    }); -->
+      <h1 class="text-center">Here you can find all of your solutions</h1>
+      <%results.posts.forEach((post) => {%>
+      <div id="accordion">  
+
+        <div class="card">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+              <%=post.title%>
+            </a>
+          </div>
+          <div id="collapseOne" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+              <%post.solutions.forEach((post)=>{%>
+                <p><%=post.solution%></p>
+                <br>
+              <%})%>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      <br>
+      <%})%>
+  </div>
+<% include ./partials/footer.ejs %>
